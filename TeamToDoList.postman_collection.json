@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "e3729735-e5f1-4965-9b35-4ff5b6031284",
+		"name": "TeamToDoList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Projects",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/project",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"project"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ad Project",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/project",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"project"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": [],
+					"cookie": [],
+					"body": "{\n\t\"id\": \"{{$guid}}\",\n\t\"projectName\": \"Create Stored Procedures for API project\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Task",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c8ee4ce8-056b-4f35-b565-375b6c426aa4",
+						"exec": [
+							"var moment = require(\"moment\");\r",
+							"var eDate = require(\"moment\");\r",
+							"\r",
+							"pm.environment.set('startDate', moment().add(14, 'days'));\r",
+							"pm.environment.set('endDate',moment().add(22, 'days'));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"taskToDo\":\"Create stored procedures\",\n\t\"projectId\": \"da4ecc78-654e-429c-89be-c15b29a7ffbc\",\n    \"statusId\": \"30c9af5e-39d1-4a83-b342-b64e7655f8bb\",\n    \"assigneeId\": \"539248ae-c4ff-43e7-9b9a-57b84ac2dede\",\n    \"startDate\": \"{{startDate}}\",\n\t\"endDate\": \"{{endDate}}\",\n\t\"description\": \"Please provide meaningful names for stored procedures\",\n\t\"comment\": \"Please do it quick\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/assignee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"assignee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assignees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/assignee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"assignee"
+					]
+				},
+				"description": "Get Assignees"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Values",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/values",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c79cb690-ca55-400e-929c-a7fd291ccbf1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "76c77c89-6c01-4764-8850-c154f6e6d96d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
