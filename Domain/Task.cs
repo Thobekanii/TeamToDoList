@@ -18,6 +18,7 @@ namespace Domain
 
             public DateTime StartDate { get; set; }
             public DateTime EndDate { get; set; }
+            public DateTime DeadLine{get;set;}
 
             public string Description { get; set; }
             public string Comment { get; set; }
