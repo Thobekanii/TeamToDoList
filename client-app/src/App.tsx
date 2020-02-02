@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import { render } from 'react-dom';
+import NavBar from './features/navbar/NavBar';
+import TaskForm from './features/form/TaskForm';
+import { observer } from 'mobx-react-lite';
+import {
+  Route,
+  withRouter,
+  RouteComponentProps,
+  Switch
+} from 'react-router-dom';
+import HomePage from './features/homepage/HomePage';
+import { Container } from 'react-bootstrap'
 
-const App: React.FC = () => {
+const App: React.FC<RouteComponentProps> = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+    // <NavBar />
+
+
+    <Fragment>
+      <NavBar />
+
+      <Container style={{ marginTop: '7em' }}>
+        <Route path='/' component={HomePage} />
+        <Switch>
+          <Route path={'/(.+)'}
+            render={() => (
+              <Fragment>
+                <Route path='/addtask' component={TaskForm} />
+              </Fragment>
+            )}
+            />
+        </Switch>
+      </Container>
+      </Fragment>
+
+      );
+    }
+    
+    export default withRouter(observer(App));
+    
