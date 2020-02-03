@@ -7,7 +7,7 @@ const NavBar = () => {
     return (
         <Navbar bg="light" fixed='top'>
             <Container>
-                <Navbar.Brand as={NavLink} to='/form'>Team To Do List</Navbar.Brand>
+                <Navbar.Brand as={NavLink} to='/login'>Team To Do List</Navbar.Brand>
             </Container>
         </Navbar>
     )

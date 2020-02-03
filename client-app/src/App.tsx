@@ -14,6 +14,8 @@ import {
 } from 'react-router-dom';
 import HomePage from './features/homepage/HomePage';
 import { Container } from 'react-bootstrap'
+import { ProjectForm } from './features/form/ProjectForm';
+import NavBar2 from './features/navbar/NavBar2';
 
 const App: React.FC<RouteComponentProps> = () => {
 
@@ -22,25 +24,30 @@ const App: React.FC<RouteComponentProps> = () => {
     // <NavBar />
 
 
-    <Fragment>
-      <NavBar />
-
-      <Container style={{ marginTop: '7em' }}>
-        <Route path='/' component={HomePage} />
+    <Fragment> 
+      <Container >
+        <NavBar />
+      </Container>
+      <Container style={{ marginTop: '3em' }}>
+        <NavBar2 />
+      </Container>
+      <Container style={{ marginTop: '5em' }}>
         <Switch>
           <Route path={'/(.+)'}
             render={() => (
               <Fragment>
                 <Route path='/addtask' component={TaskForm} />
+                <Route path='/projects' component={ProjectForm} />
+                <Route path='/login' component={HomePage} />
               </Fragment>
             )}
-            />
+          />
         </Switch>
       </Container>
-      </Fragment>
+    </Fragment>
 
-      );
-    }
-    
-    export default withRouter(observer(App));
-    
+  );
+}
+
+export default withRouter(observer(App));
+
